@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <title>Mental Health</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script src="script1.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 class="title">Mental Health</h1>
+    </header>
+    <div class="auth-container">
+        <div class="signup-box">
+            <h2>Create Your Account</h2>
+            <form id="signupForm" action="#" method="post">
+                <label for="signup-name">Username</label>
+                <input type="text" id="signup-name" name="name" placeholder="Enter your username" required>
+
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="divider">
+                <p>Or sign up with:</p>
+            </div>
+
+            <div class="social-signup">
+                <button class="social-btn facebook" onclick="facebookSignup()">
+                    <img src="facebook1.webp" alt="Facebook"> Facebook
+                </button>
+                <button class="social-btn instagram" onclick="instagramSignup()">
+                    <img src="Instagram.png" alt="Instagram"> Instagram
+                </button>
+                <button class="social-btn linkedin" onclick="linkedinSignup()">
+                    <img src="LinkedIn.png" alt="LinkedIn"> LinkedIn
+                </button>
+                <button class="social-btn gmail" onclick="gmailSignup()">
+                    <img src="gmail.png" alt="Gmail"> Gmail
+                </button>
+            </div>
+
+            <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to get user data for Facebook Signup
+        function facebookSignup() {
+            const clientId = 'YOUR_FACEBOOK_APP_ID'; // Replace with your Facebook App ID
+            const redirectUri = 'YOUR_REDIRECT_URI'; // Your redirect URI
+            const scope = 'email,public_profile'; // Permissions you need
+            const url = `https://www.facebook.com/v10.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+            window.location.href = url; // Redirect to Facebook for authorization
+        }
+
+        // Function to handle Facebook callback for signup
+        async function handleFacebookSignupCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+
+            if (code) {
+                // Exchange the code for access token
+                const response = await fetch(`/facebook/signup/callback?code=${code}`);
+                const data = await response.json();
+                console.log('Facebook User ID:', data.id);
+                console.log('Facebook User Data:', data); // Full user data
+            }
+        }
+
+        // Function to get user data for Instagram Signup
+        function instagramSignup() {
+            const clientId = 'YOUR_INSTAGRAM_CLIENT_ID'; // Replace with your Instagram client ID
+            const redirectUri = 'YOUR_REDIRECT_URI'; // Your redirect URI
+            const url = `https://api.instagram.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user_profile,user_media&response_type=code`;
+            window.location.href = url; // Redirect to Instagram for authorization
+        }
+
+        // Function to handle Instagram callback for signup
+        async function handleInstagramSignupCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+
+            if (code) {
+                // Exchange the code for access token
+                const response = await fetch(`/instagram/signup/callback?code=${code}`);
+                const data = await response.json();
+                console.log('Instagram User ID:', data.user_id);
+                console.log('Instagram User Data:', data); // Full user data
+            }
+        }
+
+        // Function to get user data for LinkedIn Signup
+        function linkedinSignup() {
+            const clientId = 'YOUR_LINKEDIN_CLIENT_ID'; // Replace with your LinkedIn Client ID
+            const redirectUri = 'YOUR_REDIRECT_URI'; // Your redirect URI
+            const scope = 'r_emailaddress r_liteprofile'; // Permissions you need
+            const url = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+            window.location.href = url; // Redirect to LinkedIn for authorization
+        }
+
+        // Function to handle LinkedIn callback for signup
+        async function handleLinkedInSignupCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+
+            if (code) {
+                // Exchange the code for access token
+                const response = await fetch(`/linkedin/signup/callback?code=${code}`);
+                const data = await response.json();
+                console.log('LinkedIn User ID:', data.id);
+                console.log('LinkedIn User Data:', data); // Full user data
+            }
+        }
+
+        // Function to get user data for Gmail Signup
+        function gmailSignup() {
+            const clientId = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your Google Client ID
+            const redirectUri = 'YOUR_REDIRECT_URI'; // Your redirect URI
+            const scope = 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'; // Scopes
+            const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${encodeURIComponent(scope)}`;
+            window.location.href = url; // Redirect to Google for authorization
+        }
+
+        // Function to handle Gmail callback for signup
+        async function handleGmailSignupCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+
+            if (code) {
+                // Exchange the code for access token
+                const response = await fetch(`/gmail/signup/callback?code=${code}`);
+                const data = await response.json();
+                console.log('Gmail User ID:', data.sub);
+                console.log('Gmail User Data:', data); // Full user data
+            }
+        }
+    </script>
+</body>
+</html>
