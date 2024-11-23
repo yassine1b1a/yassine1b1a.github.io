@@ -9,7 +9,7 @@ body {
     font-family: 'Nunito', sans-serif;
     color: #333;
     line-height: 1.6;
-    background-color: #f8f9fa;
+    background-color: #fff;
 }
 
 /* Navigation */
@@ -18,7 +18,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1em 2em;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    background: #000;
     color: #fff;
 }
 
@@ -43,20 +43,25 @@ nav .nav-links a {
 .hero {
     text-align: center;
     padding: 4em 2em;
-    background: url('mentalhealth1.jpg') no-repeat center center / cover;
+    background: url('https://source.unsplash.com/1600x900/?mental-health') no-repeat center center / cover;
     color: #fff;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
     font-size: 3em;
     margin-bottom: 1em;
-    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .hero .btn {
     padding: 0.8em 2em;
-    background: #6a11cb;
-    color: #fff;
+    background: #fff;
+    color: #000;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -67,6 +72,7 @@ nav .nav-links a {
 
 .hero .btn:hover {
     background: #2575fc;
+    color: #fff;
 }
 
 /* Section Styling */
@@ -85,13 +91,28 @@ nav .nav-links a {
     color: #555;
 }
 
-/* Auth Section */
-.auth-section {
-    background-color: #fff;
-    padding: 2em 0;
+/* Services */
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2em;
 }
 
-.auth-box {
+.service-card {
+    background: #f7f7f7;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.service-card h3 {
+    margin-bottom: 0.5em;
+    color: #2575fc;
+}
+
+/* Form Section */
+.auth-box, #contact-form {
     max-width: 400px;
     margin: 0 auto;
     background: #f7f7f7;
@@ -100,26 +121,17 @@ nav .nav-links a {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.auth-box h2 {
-    margin-bottom: 1.5em;
-    color: #333;
-}
-
-.form-group {
-    position: relative;
-    margin-bottom: 1.5em;
-}
-
-.form-group input {
+.form-group input, .form-group textarea {
     width: 100%;
     padding: 0.8em;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
     background: #fff;
+    resize: none;
 }
 
-.form-group label {
+form label {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -129,18 +141,9 @@ nav .nav-links a {
     transition: all 0.3s ease;
 }
 
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
-    top: -10px;
-    left: 5px;
-    font-size: 0.8em;
-    color: #6a11cb;
-}
-
-/* Footer */
 footer {
     text-align: center;
     padding: 2em 0;
-    background: #333;
+    background: #000;
     color: #fff;
 }
