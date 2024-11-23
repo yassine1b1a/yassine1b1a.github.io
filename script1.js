@@ -1,74 +1,76 @@
-// script.js
+// Ensure DOM is loaded before running the script
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("script1.js is connected!");
 
-// Function to validate email format
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-}
+    // Handle the form submission on the contact form (index.html)
+    const contactForm = document.querySelector("#contact form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Prevent default submission
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
 
-// Function to validate the login form
-function validateLoginForm(event) {
-    event.preventDefault(); // Prevent form submission
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-
-    if (!validateEmail(email)) {
-        alert('Please enter a valid email address.');
-        return;
+            if (validateEmail(email) && name !== "") {
+                alert(`Thank you, ${name}! We will contact you at ${email}.`);
+                contactForm.reset(); // Clear the form
+            } else {
+                alert("Please fill out the form correctly!");
+            }
+        });
     }
 
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        return;
-    }
-
-    // Simulate a successful login
-    alert('Login successful!');
-    // Here, you can add AJAX calls to your backend for actual login processing
-}
-
-// Function to validate the signup form
-function validateSignupForm(event) {
-    event.preventDefault(); // Prevent form submission
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-
-    if (name.trim() === '') {
-        alert('Name cannot be empty.');
-        return;
-    }
-
-    if (!validateEmail(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        return;
-    }
-
-    // Simulate a successful signup
-    alert('Signup successful!');
-    // Here, you can add AJAX calls to your backend for actual signup processing
-}
-
-// Attach event listeners to the forms
-window.onload = function() {
-    const loginForm = document.querySelector('.login-box form');
-    const signupForm = document.querySelector('.signup-box form');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', validateLoginForm);
-    }
-
+    // Handle the form submission on the signup form (signup.html)
+    const signupForm = document.querySelector("#signup-form form");
     if (signupForm) {
-        signupForm.addEventListener('submit', validateSignupForm);
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Prevent default submission
+            const username = document.querySelector("#username").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const password = document.querySelector("#password").value;
+            const confirmPassword = document.querySelector("#confirm-password").value;
+
+            if (validateSignupForm(username, email, password, confirmPassword)) {
+                alert(`Welcome, ${username}! Your account has been created.`);
+                signupForm.reset(); // Clear the form
+            }
+        });
     }
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Thank you for contacting us. We'll get back to you soon!");
+
+    // Email validation function
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Sign-up form validation
+    function validateSignupForm(username, email, password, confirmPassword) {
+        if (username === "") {
+            alert("Username is required!");
+            return false;
+        }
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address!");
+            return false;
+        }
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long!");
+            return false;
+        }
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+
+    // Example feature: Highlight nav links on hover
+    const navLinks = document.querySelectorAll("nav ul li a");
+    navLinks.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+            link.style.color = "red"; // Highlight on hover
+        });
+        link.addEventListener("mouseleave", () => {
+            link.style.color = ""; // Reset color on mouse leave
+        });
+    });
 });
-
-
