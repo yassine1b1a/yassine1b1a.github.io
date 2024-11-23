@@ -1,132 +1,146 @@
-/* Global Styles */
-body {
+/* General Reset */
+* {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f4f6;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
     color: #333;
+    line-height: 1.6;
+    background-color: #f8f9fa;
 }
 
-/* Header */
-header {
-    position: relative;
-    background: url('mentalhealth1.jpg') no-repeat center center / cover;
-    height: 60vh;
+/* Navigation */
+nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-}
-
-header .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.title {
-    position: relative;
-    font-size: 3rem;
+    padding: 1em 2em;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
     color: #fff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Authentication Container */
-.auth-container {
-    padding: 20px;
+nav .logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+nav .nav-links {
+    list-style: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 40vh;
+    gap: 1em;
 }
 
-.login-box, .signup-box {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px 30px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-h2 {
+/* Hero Section */
+.hero {
     text-align: center;
-    color: #4a4a8a;
-    margin-bottom: 20px;
+    padding: 4em 2em;
+    background: url('mentalhealth1.jpg') no-repeat center center / cover;
+    color: #fff;
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero .btn {
+    padding: 0.8em 2em;
+    background: #6a11cb;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
     font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+    background: #2575fc;
+}
+
+/* Section Styling */
+.section {
+    padding: 3em 2em;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.section p {
+    font-size: 1.2em;
     color: #555;
 }
 
-input {
+/* Auth Section */
+.auth-section {
+    background-color: #fff;
+    padding: 2em 0;
+}
+
+.auth-box {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-box h2 {
+    margin-bottom: 1.5em;
+    color: #333;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5em;
+}
+
+.form-group input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 0.8em;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background: #f9f9f9;
+    outline: none;
+    background: #fff;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #4a4a8a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #aaa;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background: #373760;
-}
-
-.divider {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 14px;
-    color: #888;
-}
-
-/* Social Login Buttons */
-.social-login .social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-    padding: 12px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.social-btn img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.facebook { background: #3b5998; }
-.instagram { background: #e4405f; }
-.linkedin { background: #0077b5; }
-.gmail { background: #7e7e7e; }
-
-.social-btn:hover {
-    transform: scale(1.05);
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 5px;
+    font-size: 0.8em;
+    color: #6a11cb;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 10px 0;
-    background: #4a4a8a;
+    padding: 2em 0;
+    background: #333;
     color: #fff;
 }
