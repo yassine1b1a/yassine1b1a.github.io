@@ -66,4 +66,9 @@ window.onload = function() {
     if (signupForm) {
         signupForm.addEventListener('submit', validateSignupForm);
     }
-};
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Thank you for contacting us. We'll get back to you soon!");
+});
+
+
