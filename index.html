@@ -3,81 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mental Health</title>
+    <title>Main Page</title>
     <link rel="stylesheet" href="styles1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="signup.html" class="btn primary-btn">Sign Up</a>
-    <script src="script1.js"></script>
     <header>
+        <h1>Welcome to Our Website</h1>
         <nav>
-            <div class="logo">MentalHealth</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="hero">
-            <h1>Take a Step Towards Better Mental Health</h1>
-            <p>Your mental well-being is our priority.</p>
-            <a href="#login" class="btn primary-btn">Get Started</a>
-        </div>
     </header>
 
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>
-            At MentalHealth, we strive to provide the best tools and resources to
-            help you achieve emotional and mental wellness. Connect with us to
-            begin your journey towards a better you.
-        </p>
-    </section>
-
-    <section id="services" class="section">
+    <section id="services">
         <h2>Our Services</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <h3>Counseling</h3>
-                <p>Expert counselors to guide you through tough times.</p>
-            </div>
-            <div class="service-card">
-                <h3>Therapy Sessions</h3>
-                <p>Personalized therapy tailored to your unique needs.</p>
-            </div>
-            <div class="service-card">
-                <h3>Workshops</h3>
-                <p>Group sessions and skill-building activities.</p>
-            </div>
-        </div>
+        <p>We provide high-quality services tailored to your needs.</p>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact">
         <h2>Contact Us</h2>
-        <p>Have questions? We're here to help. Reach out today.</p>
-        <form id="contact-form">
-            <div class="form-group">
-                <input type="text" id="name" name="name" required>
-                <label for="name">Name</label>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" required>
-                <label for="email">Email</label>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <label for="message">Message</label>
-            </div>
-            <button type="submit" class="btn">Submit</button>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Submit</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2024 MentalHealth. All Rights Reserved.</p>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 </body>
 </html>
