@@ -4,20 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mental Health: Inner Peace</title>
+  <title>Mental Wellness | Inner Peace</title>
   <link rel="stylesheet" href="styles1.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <h1><a href="#">MindSpace</a></h1>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#signup" class="cta-nav">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- Fullscreen Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Your Mental Health, Reimagined</h1>
-      <p>Discover a path to tranquility and self-discovery.</p>
-      <a href="#explore" class="cta-button">Explore More</a>
+      <h1>Your Journey to Mental Wellness</h1>
+      <p>Explore tailored solutions, connect with support, and transform your mental health today.</p>
+      <a href="#about" class="cta-button">Learn More</a>
     </div>
     <div class="scroll-indicator">
-      <span>Scroll</span>
+      <span>Scroll Down</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -25,62 +40,93 @@
   <!-- About Section -->
   <section id="about" class="about">
     <div class="about-content">
-      <h2>About MindSpace</h2>
+      <h2>Who We Are</h2>
       <p>
-        We empower individuals with innovative mental health solutions,
-        personalized therapy, and community-driven support. Embrace self-growth and mental wellness in a safe, nurturing space.
+        MindSpace is a haven for mental well-being, where innovation meets compassion.
+        Our mission is to empower individuals with the tools, resources, and community they need to thrive.
       </p>
-      <a href="#services" class="cta-link">Learn More</a>
+      <a href="#services" class="cta-link">Explore Services</a>
     </div>
     <div class="rotating-cube">
       <div class="cube">
-        <div class="cube-face front">Growth</div>
-        <div class="cube-face back">Resilience</div>
+        <div class="cube-face front">Support</div>
+        <div class="cube-face back">Growth</div>
         <div class="cube-face top">Peace</div>
-        <div class="cube-face bottom">Support</div>
-        <div class="cube-face left">Strength</div>
-        <div class="cube-face right">Empathy</div>
+        <div class="cube-face bottom">Empathy</div>
+        <div class="cube-face left">Resilience</div>
+        <div class="cube-face right">Hope</div>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
   <section id="services" class="services">
-    <h2>What We Offer</h2>
+    <h2>Our Services</h2>
     <div class="services-grid">
       <div class="service">
         <div class="service-icon">💡</div>
-        <h3>Innovative Therapy</h3>
-        <p>Revolutionary approaches to mental health care tailored to your needs.</p>
+        <h3>Therapy Sessions</h3>
+        <p>Personalized counseling to help you overcome challenges and build resilience.</p>
+        <a href="#contact" class="service-button">Contact Us</a>
       </div>
       <div class="service">
         <div class="service-icon">🤝</div>
         <h3>Community Support</h3>
-        <p>Find comfort in shared experiences and compassionate groups.</p>
+        <p>Group therapy and peer support networks to foster connection and healing.</p>
+        <a href="#contact" class="service-button">Join Us</a>
       </div>
       <div class="service">
         <div class="service-icon">📘</div>
-        <h3>Educational Workshops</h3>
-        <p>Interactive sessions to help you grow and thrive.</p>
+        <h3>Educational Programs</h3>
+        <p>Workshops and seminars to help you understand and prioritize mental health.</p>
+        <a href="#contact" class="service-button">Get Started</a>
       </div>
     </div>
   </section>
 
+  <!-- Signup Section -->
+  <section id="signup" class="signup">
+    <h2>Join Our Community</h2>
+    <p>Sign up today to access exclusive mental health resources and updates.</p>
+    <form id="signup-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+      
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Create a password" required>
+      
+      <button type="submit">Sign Up</button>
+      <div id="form-message" class="form-message"></div>
+    </form>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>We’d love to hear from you. Let’s connect and start the journey together.</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
+    <h2>Get in Touch</h2>
+    <p>Have questions? We're here to help. Send us a message, and we'll get back to you promptly.</p>
+    <form id="contact-form">
+      <label for="contact-name">Your Name</label>
+      <input type="text" id="contact-name" placeholder="Enter your name" required>
+      
+      <label for="contact-email">Your Email</label>
+      <input type="email" id="contact-email" placeholder="Enter your email" required>
+      
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Write your message here"></textarea>
+      
       <button type="submit">Send Message</button>
+      <div id="contact-message" class="form-message"></div>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2024 MindSpace. All Rights Reserved.</p>
+    <p>© 2024 MindSpace. All Rights Reserved. | <a href="#hero">Back to Top</a></p>
   </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
