@@ -1,4 +1,4 @@
-/* Base Styles */
+/* Base Styles */ 
 * {
   margin: 0;
   padding: 0;
@@ -136,7 +136,7 @@ header {
   transform: translateY(-5px);
 }
 
-/* Parallax effect */
+/* Keyframe Animations */
 @keyframes slideInFromTop {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(0); }
@@ -256,64 +256,6 @@ footer {
   text-align: center;
   padding: 10px 0;
   margin-top: 50px;
-}
-/* Global Styling */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(120deg, #3f51b5, #9fa8da);
-  color: #fff;
-}
-
-h1, h2, h3 {
-  font-weight: bold;
-}
-
-a {
-  color: #ffd54f;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #ffca28;
-}
-
-/* Navbar Styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 20px;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.navbar h1 {
-  font-size: 1.8rem;
-  color: #ffd54f;
-}
-
-.navbar ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar ul li {
-  margin: 0 15px;
-}
-
-.navbar ul li a {
-  font-size: 1rem;
-  color: #fff;
-}
-
-.navbar ul li a.active {
-  font-weight: bold;
-  color: #ffca28;
 }
 
 /* Contact Section */
