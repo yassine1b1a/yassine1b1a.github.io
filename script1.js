@@ -12,55 +12,53 @@ window.onload = function() {
     }
 };
 
-// Smooth scroll to anchor links with animation
+// Smooth scroll to anchor links with animati
+
+// Form Validation for SignUp Form
+// Smooth Scroll for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
     document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+      behavior: 'smooth'
     });
   });
 });
 
-// Form Validation for SignUp Form
+// Signup Form Validation
 const signupForm = document.getElementById('signup-form');
-signupForm.addEventListener('submit', function(event) {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  let errorMessages = [];
+const formMessage = document.getElementById('form-message');
 
-  if (!name || name.trim() === "") {
-    errorMessages.push("Name is required.");
-  }
-  if (!email || !validateEmail(email)) {
-    errorMessages.push("A valid email is required.");
-  }
-  if (!password || password.length < 6) {
-    errorMessages.push("Password must be at least 6 characters long.");
-  }
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-  if (errorMessages.length > 0) {
-    event.preventDefault();
-    alert(errorMessages.join("\n"));
+  if (!name || !email || !password) {
+    formMessage.textContent = 'Please fill in all fields!';
+    formMessage.style.color = 'red';
   } else {
-    alert("Thanks for signing up! We will contact you shortly.");
+    formMessage.textContent = 'Success! You are signed up.';
+    formMessage.style.color = 'green';
   }
 });
 
-function validateEmail(email) {
-  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  return re.test(email);
-}
+// Contact Form Validation
+const contactForm = document.getElementById('contact-form');
+const contactMessage = document.getElementById('contact-message');
 
-// Light/Dark Mode Toggle
-const toggleMode = document.getElementById('mode-toggle');
-toggleMode.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-    if (document.body.classList.contains('dark-mode')) {
-        toggleMode.textContent = "Switch to Light Mode";
-    } else {
-        toggleMode.textContent = "Switch to Dark Mode";
-    }
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const contactName = document.getElementById('contact-name').value.trim();
+  const contactEmail = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!contactName || !contactEmail || !message) {
+    contactMessage.textContent = 'All fields are required!';
+    contactMessage.style.color = 'red';
+  } else {
+    contactMessage.textContent = 'Your message has been sent!';
+    contactMessage.style.color = 'green';
+  }
 });
