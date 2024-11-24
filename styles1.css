@@ -1,4 +1,4 @@
-/* Reset */
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +7,74 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: #1c1c1c;
-  background: #f4f7fa;
-  overflow-x: hidden;
+  color: #333;
+  background: linear-gradient(135deg, #ffffff, #f0f4f8);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #3f51b5;
+}
+
+/* Navbar */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.navbar h1 a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li a {
+  color: #555;
+  font-weight: 600;
+}
+
+.navbar-links li a:hover {
+  color: #3f51b5;
+}
+
+.cta-nav {
+  background: linear-gradient(45deg, #ff6f61, #ff8e53);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cta-nav:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
 }
 
 /* Hero Section */
@@ -20,98 +85,70 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom right, #6c63ff, #98c1d9);
+  background: linear-gradient(to right, #3f51b5, #5c6bc0);
   color: white;
   position: relative;
 }
 
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  animation: fadeInDown 1.5s ease;
+.hero-content h1 {
+  font-size: 4rem;
+  animation: fadeInDown 1s ease;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
+.hero-content p {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  animation: fadeInUp 1.5s ease;
 }
 
 .cta-button {
-  padding: 12px 30px;
-  font-size: 1rem;
+  background: linear-gradient(45deg, #ff6f61, #ff8e53);
+  padding: 15px 30px;
+  font-size: 1.2rem;
   color: white;
-  background: #ff6f61;
+  border: none;
   border-radius: 30px;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: bounce 2s infinite;
 }
 
 .cta-button:hover {
-  transform: scale(1.1);
-  background: #e45f51;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.scroll-indicator span {
-  font-size: 0.8rem;
-  margin-bottom: 5px;
-}
-
-.scroll-line {
-  width: 2px;
-  height: 40px;
-  background: white;
-  animation: scroll 1.5s infinite ease-in-out;
-}
-
-@keyframes scroll {
-  0% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.5);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* About Section */
 .about {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 100px 10%;
-  background: linear-gradient(to bottom right, #ffffff, #e3ecff);
+  justify-content: space-between;
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #ffffff, #f7f9fc);
 }
 
-.about-content {
-  max-width: 50%;
-}
-
-.about h2 {
+.about-content h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.about p {
-  margin-bottom: 30px;
+.about-content p {
+  font-size: 1.2rem;
   line-height: 1.6;
 }
 
 .cta-link {
-  text-decoration: none;
-  color: #6c63ff;
-  font-weight: bold;
+  color: white;
+  background: #3f51b5;
+  padding: 10px 25px;
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cta-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .rotating-cube {
@@ -123,55 +160,47 @@ body {
   height: 200px;
   position: relative;
   transform-style: preserve-3d;
-  animation: rotateCube 8s infinite linear;
+  animation: rotateCube 10s infinite linear;
 }
 
 .cube-face {
   position: absolute;
   width: 200px;
   height: 200px;
-  background: #6c63ff;
+  background: #3f51b5;
   color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  justify-content: center;
+  font-size: 1.5rem;
   font-weight: bold;
-  opacity: 0.8;
 }
 
-.cube-face.front {
-  transform: translateZ(100px);
+.cube-face.front { transform: translateZ(100px); }
+.cube-face.back { transform: translateZ(-100px) rotateY(180deg); }
+.cube-face.left { transform: rotateY(-90deg) translateX(-100px); transform-origin: center left; }
+.cube-face.right { transform: rotateY(90deg) translateX(100px); transform-origin: center right; }
+.cube-face.top { transform: rotateX(90deg) translateY(-100px); transform-origin: top center; }
+.cube-face.bottom { transform: rotateX(-90deg) translateY(100px); transform-origin: bottom center; }
+
+/* Keyframes */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-.cube-face.back {
-  transform: rotateY(180deg) translateZ(100px);
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-.cube-face.left {
-  transform: rotateY(-90deg) translateZ(100px);
-}
-.cube-face.right {
-  transform: rotateY(90deg) translateZ(100px);
-}
-.cube-face.top {
-  transform: rotateX(90deg) translateZ(100px);
-}
-.cube-face.bottom {
-  transform: rotateX(-90deg) translateZ(100px);
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
 @keyframes rotateCube {
-  from {
-    transform: rotateX(0) rotateY(0);
-  }
-  to {
-    transform: rotateX(360deg) rotateY(360deg);
-  }
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #1c1c1c;
-  color: white;
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
 }
