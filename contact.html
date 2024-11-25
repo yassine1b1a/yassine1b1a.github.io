@@ -3,74 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
+  <title>Contact Us - Serenity</title>
   <link rel="stylesheet" href="styles1.css">
-  <script src="script1.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
+  <script src="script1.js" defer></script>
   <header>
     <div class="navbar">
-      <h1>Mindful Wellness</h1>
+      <h1>Serenity</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="signin.html">Sign In</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- Contact Section -->
-  <section class="contact">
+  <main class="contact">
     <h2>Contact Us</h2>
-    <p>We’re here to listen and help. Reach out to us today.</p>
+    <form action="submit_contact.php" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
 
-    <!-- Contact Form -->
-    <form id="contact-form">
-      <label for="name">Your Name</label>
-      <input type="text" id="contact-name" placeholder="Enter your name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="contact-email" placeholder="Enter your email" required>
-
-      <label for="message">Your Message</label>
-      <textarea id="contact-message" placeholder="Type your message here..." rows="5" required></textarea>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
-
-    <!-- Contact Details -->
-    <div class="contact-info">
-      <div>
-        <h3>Email</h3>
-        <p>support@mindfulwellness.com</p>
-      </div>
-      <div>
-        <h3>Phone</h3>
-        <p>+1 (123) 456-7890</p>
-      </div>
-      <div>
-        <h3>Address</h3>
-        <p>123 Mindful Lane, Serenity City, USA</p>
-      </div>
-    </div>
-
-    <!-- Google Maps Embed -->
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.510054534792!2d-122.4064176846785!3d37.78583497975644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064b689abeb%3A0x5fdb46f1ae9ad749!2sSan%20Francisco!5e0!3m2!1sen!2sus!4v1680594692345!5m2!1sen!2sus" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  </main>
+  
   <footer>
-    <p>© 2024 Mindful Wellness. All rights reserved.</p>
+    <p>&copy; 2024 Serenity | All Rights Reserved</p>
   </footer>
 </body>
 </html>
