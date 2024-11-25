@@ -62,3 +62,63 @@ contactForm.addEventListener('submit', (e) => {
     contactMessage.style.color = 'green';
   }
 });
+// Form Validation
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('form');
+  
+  forms.forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const inputs = form.querySelectorAll('input, textarea');
+      let isValid = true;
+
+      inputs.forEach((input) => {
+        if (input.value.trim() === '') {
+          isValid = false;
+          input.style.border = '2px solid red';
+        } else {
+          input.style.border = '1px solid #c8e6c9';
+        }
+      });
+
+      if (isValid) {
+        alert('Form submitted successfully!');
+        form.reset();
+      } else {
+        alert('Please fill out all fields.');
+      }
+    });
+  });
+});
+
+// Password Toggle for Sign-In
+const togglePassword = () => {
+  const passwordField = document.getElementById('password');
+  const type = passwordField.type === 'password' ? 'text' : 'password';
+  passwordField.type = type;
+};
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth',
+    });
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const cube = document.querySelector('.cube');
+  let isRotating = true;
+
+  cube.addEventListener('click', () => {
+    if (isRotating) {
+      cube.style.animationPlayState = 'paused';
+      isRotating = false;
+    } else {
+      cube.style.animationPlayState = 'running';
+      isRotating = true;
+    }
+  });
+});
