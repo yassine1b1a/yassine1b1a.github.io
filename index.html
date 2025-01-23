@@ -1,46 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Serenity</title>
-  <link rel="stylesheet" href="styles1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #4e4376);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 255, 255, 1);
+            }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(90deg, #ff7eb3, #ff758c);
+            color: black;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .hover-box {
+            margin: 50px auto;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .hover-box-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fc466b, #3f5efb);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .hover-box:hover .hover-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .hover-box-inner div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .hover-box-inner .front {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hover-box-inner .back {
+            background: rgba(0, 0, 0, 0.8);
+            transform: rotateY(180deg);
+        }
+    </style>
 </head>
 <body>
-  <script src="script1.js" defer></script>
-  <header>
-    <div class="navbar">
-      <h1>Serenity</h1>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-        <li><a href="signin.html">Sign In</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-      </ul>
-    </div>
-  </header>
-  
-  <main class="hero">
-    <h1>Welcome to Serenity</h1>
-    <p>Discover peace of mind with our user-friendly platform.</p>
-    <a href="signin.html" class="cta-button">Join Us</a>
-    <section class="cube-section">
-      <div class="cube-container">
-        <div class="cube">
-          <div class="face front">Front</div>
-          <div class="face back">Back</div>
-          <div class="face right">Right</div>
-          <div class="face left">Left</div>
-          <div class="face top">Top</div>
-          <div class="face bottom">Bottom</div>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Welcome to My CV</h1>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm a passionate web developer with a knack for design and problem-solving.</p>
+        <div class="hover-box">
+            <div class="hover-box-inner">
+                <div class="front">Hover Me!</div>
+                <div class="back">Nice to Meet You!</div>
+            </div>
         </div>
-      </div>
-     </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2024 Serenity | All Rights Reserved</p>
-  </footer>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>HTML, CSS, JavaScript, React, Node.js, and more!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: myemail@example.com</p>
+        <p>Phone: +123 456 789</p>
+    </section>
 </body>
 </html>
