@@ -1,173 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taha Yassine Ben Ali - CV</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #1e3c72, #4e4376);
-        }
-
-        header h1 {
-            font-size: 3rem;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-            animation: glow 1.5s infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-            }
-            to {
-                text-shadow: 0 0 40px rgba(255, 255, 255, 1);
-            }
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li {
-            position: relative;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 10px 20px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            background: linear-gradient(90deg, #ff7eb3, #ff758c);
-            color: black;
-            border-radius: 5px;
-        }
-
-        section {
-            padding: 50px;
-            text-align: center;
-        }
-
-        .hover-box {
-            margin: 50px auto;
-            width: 300px;
-            height: 300px;
-            perspective: 1000px;
-        }
-
-        .hover-box-inner {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #fc466b, #3f5efb);
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-        }
-
-        .hover-box:hover .hover-box-inner {
-            transform: rotateY(180deg);
-        }
-
-        .hover-box-inner div {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .hover-box-inner .front {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .hover-box-inner .back {
-            background: rgba(0, 0, 0, 0.8);
-            transform: rotateY(180deg);
-        }
-
-        .profile-frame {
-            margin: 20px auto;
-            width: 150px;
-            height: 150px;
-            border: 5px solid white;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .profile-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <title>Mon CV</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images.png" alt="Photo de profil">
+            <h1>Taha Yassine Ben Ali</h1>
+            <p>Développeur Web</p>
+            <p>Email: tahayassinebenali04@gmail.com</p>
+            <p>Adresse: Rue 9 Avril</p>
+        </aside>
 
-    <header>
-        <h1>Welcome to My CV</h1>
-    </header>
+        <main class="main-content">
+            <section>
+                <h2>Profil</h2>
+                <p>Développeur passionné, spécialisé dans la création d'applications modernes et performantes avec expertise en JavaScript, React et Node.js.</p>
+            </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="profile-frame">
-            <img src="your-picture.jpg" alt="Taha Yassine Ben Ali">
-        </div>
-        <p>My name is Taha Yassine Ben Ali, and I am an enthusiastic engineering student with a passion for coding and problem-solving. I enjoy creating innovative solutions and constantly strive to improve my skills in programming and technology. Feel free to reach out to me at <strong>tahayassinebenali04@gmail.com</strong> or call me at <strong>+216 99447133</strong> for any collaboration or inquiries!</p>
-    </section>
+            <section>
+                <h2>Compétences Techniques</h2>
+                <ul>
+                    <li>JavaScript, React, HTML, CSS, SQL, Node.js</li>
+                </ul>
+            </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <p>HTML, CSS, JavaScript, React, Node.js, and more!</p>
-    </section>
+            <section>
+                <h2>Expérience Professionnelle</h2>
+                <ul>
+                    <li>Développement d'un site sur la santé mentale avec IEEE Enig Club.</li>
+                    <li>Création d'un site de sécurité pour les femmes avec IEEE Enig Club.</li>
+                </ul>
+            </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <strong>tahayassinebenali04@gmail.com</strong></p>
-        <p>Phone: <strong>+216 99447133</strong></p>
-    </section>
+            <section>
+                <h2>Projets</h2>
+                <ul>
+                    <li>Application de détection d'empreintes avec intelligence artificielle.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Formation</h2>
+                <ul>
+                    <li><strong>Cycle Préparatoire</strong> - Université de Kairouan (2022 - 2024)</li>
+                    <li><strong>École Nationale d'Ingénieurs</strong> - Université de Gabès (2024 - présent)</li>
+                </ul>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
