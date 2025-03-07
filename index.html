@@ -1,57 +1,125 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon CV</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mafia Game Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .role-counts {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .player-list {
+            list-style: none;
+            padding: 0;
+        }
+        .player {
+            background: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .killed {
+            text-decoration: line-through;
+            color: red;
+        }
+        .notification {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <img src="images.png" alt="Photo de profil">
-            <h1>Taha Yassine Ben Ali</h1>
-            <p>Développeur Web</p>
-            <p>Email: tahayassinebenali04@gmail.com</p>
-            <p>Adresse: Rue 9 Avril</p>
-        </aside>
-
-        <main class="main-content">
-            <section>
-                <h2>Profil</h2>
-                <p>Développeur passionné, spécialisé dans la création d'applications modernes et performantes avec expertise en JavaScript, React et Node.js.</p>
-            </section>
-
-            <section>
-                <h2>Compétences Techniques</h2>
-                <ul>
-                    <li>JavaScript, React, HTML, CSS, SQL, Node.js</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Expérience Professionnelle</h2>
-                <ul>
-                    <li>Développement d'un site sur la santé mentale avec IEEE Enig Club.</li>
-                    <li>Création d'un site de sécurité pour les femmes avec IEEE Enig Club.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Projets</h2>
-                <ul>
-                    <li>Application de détection d'empreintes avec intelligence artificielle.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Formation</h2>
-                <ul>
-                    <li><strong>Cycle Préparatoire</strong> - Université de Kairouan (2022 - 2024)</li>
-                    <li><strong>École Nationale d'Ingénieurs</strong> - Université de Gabès (2024 - présent)</li>
-                </ul>
-            </section>
-        </main>
-    </div>
+    <h1>Mafia Game Manager</h1>
+    <label>Number of Players: <input type="number" id="playerCount" min="1"></label>
+    <button onclick="setPlayers()">Set Players</button>
+    
+    <div class="role-counts" id="roleCounts"></div>
+    
+    <ul class="player-list" id="playerList"></ul>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        let players = [];
+        let roles = ["Mafia", "Doctor", "Thinker", "JudgeXcrazy", "Sheriff", "Hacker", "Citizen"];
+        let roleCount = {};
+        
+        function setPlayers() {
+            const playerCount = document.getElementById("playerCount").value;
+            players = [];
+            document.getElementById("playerList").innerHTML = "";
+            for (let i = 0; i < playerCount; i++) {
+                addPlayer();
+            }
+            updateRoleCounts();
+        }
+        
+        function addPlayer() {
+            const name = prompt("Enter player name:");
+            if (!name) return;
+            const role = prompt(`Assign role to ${name} (${roles.join(",")}):`);
+            if (!roles.includes(role)) {
+                alert("Invalid role! Try again.");
+                return;
+            }
+            players.push({ name, role, killed: false });
+            updatePlayerList();
+            updateRoleCounts();
+        }
+        
+        function updatePlayerList() {
+            const list = document.getElementById("playerList");
+            list.innerHTML = "";
+            players.forEach((player, index) => {
+                const li = document.createElement("li");
+                li.classList.add("player");
+                if (player.killed) li.classList.add("killed");
+                li.innerHTML = `${player.name} - ${player.role} <button onclick="killPlayer(${index})">Kill</button>`;
+                list.appendChild(li);
+            });
+        }
+        
+        function updateRoleCounts() {
+            roleCount = {};
+            players.forEach(player => {
+                if (!player.killed) {
+                    roleCount[player.role] = (roleCount[player.role] || 0) + 1;
+                }
+            });
+            
+            document.getElementById("roleCounts").innerHTML = roles.map(role => `${role}: ${roleCount[role] || 0}`).join(" | ");
+            checkGameState();
+        }
+        
+        function killPlayer(index) {
+            if (!players[index].killed) {
+                players[index].killed = true;
+                updatePlayerList();
+                updateRoleCounts();
+            }
+        }
+        
+        function checkGameState() {
+            const mafiaCount = roleCount["Mafia"] || 0;
+            const hackerCount = roleCount["Hacker"] || 0;
+            let otherRolesSum = Object.keys(roleCount).reduce((sum, role) => role !== "Mafia" && role !== "Hacker" ? sum + roleCount[role] : sum, 0);
+            
+            if (mafiaCount > otherRolesSum) {
+                document.getElementById("notification").innerText = "Mafia has taken over!";
+            } else {
+                document.getElementById("notification").innerText = "";
+            }
+        }
+    </script>
 </body>
 </html>
