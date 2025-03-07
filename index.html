@@ -115,7 +115,7 @@
             const hackerCount = roleCount["Hacker"] || 0;
             let otherRolesSum = Object.keys(roleCount).reduce((sum, role) => role !== "Mafia" && role !== "Hacker" ? sum + roleCount[role] : sum, 0);
             
-            if (mafiaCount > otherRolesSum) {
+            if (mafiaCount >= otherRolesSum) {
                 document.getElementById("notification").innerText = "Mafia has taken over!";
             } else if (mafiaCount === 0) {
                 document.getElementById("notification").innerText = "Citizens win!";
