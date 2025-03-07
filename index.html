@@ -15,18 +15,15 @@
             margin-bottom: 20px;
             font-size: 18px;
         }
-        .player-list {
-            list-style: none;
-            padding: 0;
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
         }
-        .player {
-            background: white;
+        th, td {
+            border: 1px solid black;
             padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
         }
         .killed {
             text-decoration: line-through;
@@ -35,6 +32,7 @@
         .notification {
             color: red;
             font-weight: bold;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -46,7 +44,16 @@
     
     <div class="role-counts" id="roleCounts"></div>
     
-    <ul class="player-list" id="playerList"></ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="playerList"></tbody>
+    </table>
     
     <div class="notification" id="notification"></div>
     
@@ -66,35 +73,41 @@
         }
         
         function addPlayer() {
-            const name = prompt("Enter player name:");
-            if (!name) return;
-            const role = prompt(`Assign role to ${name} (${roles.join(",")}):`);
-            if (!roles.includes(role)) {
-                alert("Invalid role! Try again.");
-                return;
-            }
-            players.push({ name, role, killed: false });
-            updatePlayerList();
-            updateRoleCounts();
-        }
-        
-        function updatePlayerList() {
-            const list = document.getElementById("playerList");
-            list.innerHTML = "";
-            players.forEach((player, index) => {
-                const li = document.createElement("li");
-                li.classList.add("player");
-                if (player.killed) li.classList.add("killed");
-                li.innerHTML = `${player.name} - ${player.role} <button onclick="killPlayer(${index})">Kill</button>`;
-                list.appendChild(li);
+            const table = document.getElementById("playerList");
+            const row = table.insertRow();
+            
+            const nameCell = row.insertCell(0);
+            const roleCell = row.insertCell(1);
+            const actionCell = row.insertCell(2);
+            
+            const nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameCell.appendChild(nameInput);
+            
+            const roleSelect = document.createElement("select");
+            roles.forEach(role => {
+                let option = document.createElement("option");
+                option.value = role;
+                option.textContent = role;
+                roleSelect.appendChild(option);
             });
+            roleCell.appendChild(roleSelect);
+            
+            const killButton = document.createElement("button");
+            killButton.textContent = "Kill";
+            killButton.onclick = function() { killPlayer(row); };
+            actionCell.appendChild(killButton);
+            
+            players.push({ nameInput, roleSelect, killed: false });
+            updateRoleCounts();
         }
         
         function updateRoleCounts() {
             roleCount = {};
             players.forEach(player => {
                 if (!player.killed) {
-                    roleCount[player.role] = (roleCount[player.role] || 0) + 1;
+                    let role = player.roleSelect.value;
+                    roleCount[role] = (roleCount[role] || 0) + 1;
                 }
             });
             
@@ -102,12 +115,11 @@
             checkGameState();
         }
         
-        function killPlayer(index) {
-            if (!players[index].killed) {
-                players[index].killed = true;
-                updatePlayerList();
-                updateRoleCounts();
-            }
+        function killPlayer(row) {
+            row.classList.add("killed");
+            let index = Array.from(row.parentElement.children).indexOf(row);
+            players[index].killed = true;
+            updateRoleCounts();
         }
         
         function checkGameState() {
