@@ -42,6 +42,7 @@
     <h1>Mafia Game Manager</h1>
     <label>Number of Players: <input type="number" id="playerCount" min="1"></label>
     <button onclick="setPlayers()">Set Players</button>
+    <button onclick="resetGame()">Reset Game</button>
     
     <div class="role-counts" id="roleCounts"></div>
     
@@ -116,9 +117,19 @@
             
             if (mafiaCount > otherRolesSum) {
                 document.getElementById("notification").innerText = "Mafia has taken over!";
+            } else if (mafiaCount === 0) {
+                document.getElementById("notification").innerText = "Citizens win!";
             } else {
                 document.getElementById("notification").innerText = "";
             }
+        }
+        
+        function resetGame() {
+            players = [];
+            document.getElementById("playerList").innerHTML = "";
+            document.getElementById("roleCounts").innerHTML = "";
+            document.getElementById("notification").innerText = "";
+            document.getElementById("playerCount").value = "";
         }
     </script>
 </body>
