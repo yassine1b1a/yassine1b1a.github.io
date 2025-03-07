@@ -40,7 +40,7 @@
     <h1>Mafia Game Manager</h1>
     <label>Number of Players: <input type="number" id="playerCount" min="1"></label>
     <button onclick="setPlayers()">Set Players</button>
-    <button onclick="resetGame()">Reset Game</button>
+    <button onclick="resetRoles()">Reset Roles</button>
     
     <div class="role-counts" id="roleCounts"></div>
     
@@ -136,12 +136,13 @@
             }
         }
         
-        function resetGame() {
-            players = [];
-            document.getElementById("playerList").innerHTML = "";
-            document.getElementById("roleCounts").innerHTML = "";
-            document.getElementById("notification").innerText = "";
-            document.getElementById("playerCount").value = "";
+        function resetRoles() {
+            players.forEach(player => {
+                player.roleSelect.value = "Citizen";
+                player.killed = false;
+            });
+            document.querySelectorAll(".killed").forEach(row => row.classList.remove("killed"));
+            updateRoleCounts();
         }
     </script>
 </body>
