@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("ajouterEtudiant").addEventListener("click", function () {
         let nom = prompt("Entrez le nom de l'étudiant :");
         let note = prompt("Entrez la note de l'étudiant :");
-        if (nom && note && !isNaN(note)) {
+        if (nom && note && !isNaN(note) && note>=0) {
             ajouterEtudiant(nom, parseFloat(note));
         }
     });
