@@ -1,5 +1,5 @@
+//Exercice 1 :
 document.addEventListener("DOMContentLoaded", function () {
-    // Exercice 1: Emploi du Temps
     document.querySelectorAll("#emploiDuTemps td:not(.jour)").forEach(cell => {
         cell.addEventListener("click", function () {
             let matiere = prompt("Entrez la matière :");
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Exercice 2: Gestion des Notes
+    // Exercice 2: 
     document.getElementById("ajouterEtudiant").addEventListener("click", function () {
         let nom = prompt("Entrez le nom de l'étudiant :");
         let note = prompt("Entrez la note de l'étudiant :");
