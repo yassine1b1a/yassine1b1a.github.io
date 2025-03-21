@@ -1,190 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mafia Game Manager</title>
+    <title>Emploi du Temps et Gestion des Notes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #333;
-            padding: 20px;
-            color: #fff;
-            background-image: url('background-image.jpg'); /* Your background image here */
-            background-size: cover;
-            background-position: center;
-        }
-        .role-counts {
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px #fff;
-        }
-        table {
-            width: 80%;
-            margin: auto;
+        table, th, td{
+            border: 1px solid black;
             border-collapse: collapse;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
-        th, td {
-            border: 1px solid #fff;
             padding: 10px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
         th {
-            background-color: #444;
+            background-color: #ff0707;
         }
-        td:hover {
-            transform: scale(1.05);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .killed {
-            text-decoration: line-through;
-            color: red;
-            animation: fadeOut 1s forwards;
-        }
-        .notification {
-            color: yellow;
+        .jour{
+            background-color: #c06868;
+            color: black;
             font-weight: bold;
-            margin-top: 20px;
-            font-size: 24px;
-            animation: glow 1.5s ease-in-out infinite;
         }
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px yellow, 0 0 10px yellow, 0 0 15px yellow; }
-            50% { text-shadow: 0 0 20px red, 0 0 30px red, 0 0 40px red; }
-            100% { text-shadow: 0 0 5px yellow, 0 0 10px yellow, 0 0 15px yellow; }
-        }
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0.2; }
-        }
-        .winner {
-            color: #0f0;
-            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
-            animation: glow 1.5s ease-in-out infinite;
-        }
-        .mafia-winner {
-            color: red;
-            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
-            animation: glow 1.5s ease-in-out infinite;
-        }
+        
+        
     </style>
 </head>
 <body>
-    <h1>Mafia Game Manager</h1>
-    <label>Number of Players: <input type="number" id="playerCount" min="1"></label>
-    <button onclick="setPlayers()">Set Players</button>
-    <button onclick="resetRoles()">Reset Roles</button>
-    
-    <div class="role-counts" id="roleCounts"></div>
-    
-    <table>
+
+   
+    <h2>Emploi du Temps</h2>
+    <table id="emploiDuTemps">
+        <tr>
+            <th>Heure</th>
+            <th>8 -- 10</th>
+            <th>10 -- 12</th>
+            <th>14 -- 16</th>
+            <th>16 -- 18</th>
+        </tr>
+        <tr>
+            <td class="jour">Lundi</td>
+            <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+        <tr>
+            <td class="jour">Merdi</td>
+            <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+        <tr>
+            <td class="jour">Mercredi</td>
+            <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+        <tr>
+            <td class="jour">jeudi</td>
+            <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+        <tr>
+            <td class="jour">vendredi</td>
+            <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+    </table>
+    <h2>Gestion des Notes</h2>
+    <button id="ajouterEtudiant">Ajouter un étudiant</button>
+    <table id="tableEtudiants">
         <thead>
             <tr>
-                <th>Player Name</th>
-                <th>Role</th>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Note</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="playerList"></tbody>
+        <tbody>
+          
+        </tbody>
     </table>
-    
-    <div class="notification" id="notification"></div>
-    
-    <script>
-        let players = [];
-        let roles = ["Mafia", "Doctor", "Thinker", "JudgeXcrazy", "Sheriff", "Hacker", "Citizen"];
-        let roleCount = {};
-        
-        function setPlayers() {
-            const playerCount = document.getElementById("playerCount").value;
-            players = [];
-            document.getElementById("playerList").innerHTML = "";
-            for (let i = 0; i < playerCount; i++) {
-                addPlayer();
-            }
-            updateRoleCounts();
-        }
-        
-        function addPlayer() {
-            const table = document.getElementById("playerList");
-            const row = table.insertRow();
-            
-            const nameCell = row.insertCell(0);
-            const roleCell = row.insertCell(1);
-            const actionCell = row.insertCell(2);
-            
-            const nameInput = document.createElement("input");
-            nameInput.type = "text";
-            nameCell.appendChild(nameInput);
-            
-            const roleSelect = document.createElement("select");
-            roles.forEach(role => {
-                let option = document.createElement("option");
-                option.value = role;
-                option.textContent = role;
-                roleSelect.appendChild(option);
-            });
-            roleCell.appendChild(roleSelect);
-            
-            const killButton = document.createElement("button");
-            killButton.textContent = "Kill";
-            killButton.onclick = function() { killPlayer(row); };
-            actionCell.appendChild(killButton);
-            
-            players.push({ nameInput, roleSelect, killed: false });
-            updateRoleCounts();
-        }
-        
-        function updateRoleCounts() {
-            roleCount = {};
-            players.forEach(player => {
-                if (!player.killed) {
-                    let role = player.roleSelect.value;
-                    roleCount[role] = (roleCount[role] || 0) + 1;
-                }
-            });
-            
-            document.getElementById("roleCounts").innerHTML = roles.map(role => `${role}: ${roleCount[role] || 0}`).join(" | ");
-            checkGameState();
-        }
-        
-        function killPlayer(row) {
-            row.classList.add("killed");
-            let index = Array.from(row.parentElement.children).indexOf(row);
-            players[index].killed = true;
-            updateRoleCounts();
-        }
-        
-        function checkGameState() {
-            const mafiaCount = roleCount["Mafia"] || 0;
-            const hackerCount = roleCount["Hacker"] || 0;
-            let otherRolesSum = Object.keys(roleCount).reduce((sum, role) => role !== "Mafia" && role !== "Hacker" ? sum + roleCount[role] : sum, 0);
-            
-            if (mafiaCount >= otherRolesSum) {
-                document.getElementById("notification").innerText = "Mafia has taken over!";
-                document.getElementById("notification").classList.add("mafia-winner");
-            } else if (mafiaCount === 0) {
-                document.getElementById("notification").innerText = "Citizens win!";
-                document.getElementById("notification").classList.add("winner");
-            } else {
-                document.getElementById("notification").innerText = "";
-            }
-        }
-        
-        function resetRoles() {
-            players.forEach(player => {
-                player.roleSelect.value = "Citizen";
-                player.killed = false;
-            });
-            document.querySelectorAll(".killed").forEach(row => row.classList.remove("killed"));
-            updateRoleCounts();
-            document.getElementById("notification").innerText = "";
-            document.getElementById("notification").classList.remove("winner", "mafia-winner");
-        }
-    </script>
+
+    <script src="ex2.js"></script> 
 </body>
 </html>
